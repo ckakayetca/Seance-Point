@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NewSeanceComponent } from './new-seance/new-seance.component';
 import { SeanceDetailsComponent } from './seance-details/seance-details.component';
 import { MySeancesComponent } from './my-seances/my-seances.component';
+import { SeanceEditComponent } from './seance-edit/seance-edit.component';
 
 
 
@@ -10,7 +11,8 @@ import { MySeancesComponent } from './my-seances/my-seances.component';
   declarations: [
     NewSeanceComponent,
     SeanceDetailsComponent,
-    MySeancesComponent
+    MySeancesComponent,
+    SeanceEditComponent
   ],
   imports: [
     CommonModule
