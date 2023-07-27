@@ -9,6 +9,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'seances',
+    loadChildren: () =>
+      import('./seance/seance.module').then((m) => m.SeanceModule),
+  },
 ];
 
 @NgModule({

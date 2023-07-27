@@ -4,6 +4,8 @@ import { NewSeanceComponent } from './new-seance/new-seance.component';
 import { SeanceDetailsComponent } from './seance-details/seance-details.component';
 import { MySeancesComponent } from './my-seances/my-seances.component';
 import { SeanceEditComponent } from './seance-edit/seance-edit.component';
+import { SeancesComponent } from './seances/seances.component';
+import { SeanceRoutingModule } from './seance-routing.module';
 
 
 
@@ -12,10 +14,15 @@ import { SeanceEditComponent } from './seance-edit/seance-edit.component';
     NewSeanceComponent,
     SeanceDetailsComponent,
     MySeancesComponent,
-    SeanceEditComponent
+    SeanceEditComponent,
+    SeancesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    MySeancesComponent,
+    SeanceRoutingModule
   ]
 })
 export class SeanceModule { }
