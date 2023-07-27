@@ -9,7 +9,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     HomeComponent,
     AboutComponent,
-    NotfoundComponent
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,9 +26,9 @@ import { AuthModule } from './auth/auth.module';
     CoreModule,
     SharedModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

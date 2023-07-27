@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     ProfileEditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthRoutingModule,
   ]
 })
 export class AuthModule { }
