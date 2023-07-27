@@ -4,15 +4,17 @@
         <ul>
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/seances">Seances</a></li>
-            <li><a routerLink="/seances/create">New Seance</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/seances/create">New Seance</a></li>
         </ul>
     </nav>
     <!-- Auth-directed navigation (login, register, logout, profile) -->
     <nav class="right">
-        <ul>
+        <ul *ngIf="!isLoggedIn">
             <li><a routerLink="auth/login">Login</a></li>
             <li><a routerLink="auth/register">Register</a></li>
-            <li><a routerLink="auth/logout">Logout</a></li>
+        </ul>
+        <ul *ngIf="isLoggedIn">
+            <li><a (click)="logout()">Logout</a></li>
         </ul>
     </nav>
 </header>
