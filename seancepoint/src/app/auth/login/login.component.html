@@ -1,1 +1,54 @@
-<p>login works!</p>
+<div class="container">
+    <form class="login" #form="ngForm">
+      <fieldset>
+        <h2>Login to SeancePoint</h2>
+
+        <p class="field field-icon">
+          <label for="email"
+            ><span><i class="fas fa-envelope"></i></span
+          ></label>
+          <input
+            class="input-error"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="john.doe@gmail.com"
+            ngModel
+            #email="ngModel"
+            required
+            appEmail
+          />
+        </p>
+        <ng-container *ngIf="email.touched">
+          <p class="error" *ngIf="email.errors?.['required']">Email is required!</p>
+          <p class="error" *ngIf="email.errors?.['emailValidator']">Email is not valid!</p>
+        </ng-container>
+        <p class="field field-icon">
+          <label for="password"
+            ><span><i class="fas fa-lock"></i></span
+          ></label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="******"
+            ngModel
+            #password="ngModel"
+            required
+            minlength=4
+          />
+        </p>
+        <ng-container *ngIf="password.touched">
+          <p class="error" *ngIf="password.errors?.['required']">Password is required!</p>
+          <p class="error" *ngIf="password.errors?.['minlength']">Password must be at least 4 characters!</p>
+        </ng-container>
+
+        <button [disabled]="form.invalid">Login</button>
+
+        <p class="text-center">
+          Have an account?
+          <a routerLink="/auth/register">Register</a>
+        </p>
+      </fieldset>
+    </form>
+  </div>

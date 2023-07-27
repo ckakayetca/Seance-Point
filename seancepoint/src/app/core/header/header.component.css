@@ -10,7 +10,7 @@ header {
 
 nav {
     height: 100%;
-    width: 50%;
+    width: 40%;
     display: flex;
 }
 
@@ -22,6 +22,7 @@ nav {
     right: 0;
     text-align: right;
     justify-content: right;
+    margin-left: 400px;
 }
 
 ul {
@@ -31,18 +32,19 @@ ul {
 }
 
 ul li {
-    margin: 40px;
+    margin: 20px;
     margin-top: 0;
 }
 
 a {
     color: #dfdfdf;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     border: 2px solid black;
     border-radius: 5px;
     background-color: rgb(99, 13, 96);
     padding: 5px;
+    flex-wrap: nowrap;
 }
 
 a:hover {

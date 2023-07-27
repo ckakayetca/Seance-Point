@@ -9,3 +9,36 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 4.5em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* responsiveness */
+
+@media (min-width: 800px) {
+  html {
+      font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+      font-size: 18px;
+  }
+}
