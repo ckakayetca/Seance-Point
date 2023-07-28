@@ -89,8 +89,7 @@ fieldset {
 }
 
 .form-control textarea {
-  background-color: darkorchid;
-  color:#dfdfdf;
+  background-color: rgb(250, 193, 248);
 }
 
 
