@@ -3,7 +3,7 @@ export interface Seance {
     description: string,
     type: string,
     price: number,
-    length: number,
+    duration: number,
     postedBy: string,
     created_at: Date,
 }

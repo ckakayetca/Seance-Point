@@ -1,53 +1,71 @@
 <form #form="ngForm" class="seance">
-    <div>
+    <div class="form-control">
       <label for="title">Title *</label>
       <input
         type="text"
         name="title"
         id="title"
         required
-        minlength="5"
+        minlength="10"
         #title="ngModel"
         ngModel
       />
+
+      <ng-container *ngIf="title.touched">
+        <p class="error" *ngIf="title.errors?.['required']">Title is required.</p>
+        <p class="error" *ngIf="title.errors?.['minlength']">Title must be at least 10 characters long.</p>
+      </ng-container>
     </div>
-    <div>
+    <div class="form-control">
       <label for="type">Type *</label>
       <input
         type="text"
         name="type"
         id="type"
         required
-        minlength="5"
         #type="ngModel"
         ngModel
+        [appRegex]="typeRegex"
       />
+
+      <ng-container *ngIf="type.touched">
+        <p class="error" *ngIf="type.errors?.['required']">Type is required.</p>
+        <p class="error" *ngIf="type.errors?.['regexValidator']">Invalid input</p>
+      </ng-container>
     </div>
-    <div>
+    <div class="form-control">
       <label for="price">Price *</label>
       <input
-        type="text"
+        type="number"
         name="price"
         id="price"
         required
-        minlength="5"
+        min="0"
         #price="ngModel"
         ngModel
       />
+      <ng-container *ngIf="price.touched">
+        <p class="error" *ngIf="price.errors?.['required']">Price is required.</p>
+        <p class="error" *ngIf="price.errors?.['min']">Price cannot be less than 0</p>
+      </ng-container>
     </div>
-    <div>
-      <label for="length">Length (in hours) *</label>
+    <div class="form-control">
+      <label for="duration">Duration (in hours) *</label>
       <input
-        type="text"
-        name="length"
-        id="length"
+        type="number"
+        name="duration"
+        id="duration"
         required
-        minlength="5"
-        #length="ngModel"
+        min="1"
+        #duration="ngModel"
         ngModel
       />
+      <ng-container *ngIf="duration.touched">
+        <p class="error" *ngIf="duration.errors?.['required']">Price is required.</p>
+        <p class="error" *ngIf="duration.errors?.['min']">Seance duration cannot be less than 1 hour!</p>
+      </ng-container>
     </div>
-    <div>
+    <div class="form-control">
       <label for="description">Description *</label>
       <textarea
         type="text"
@@ -58,15 +76,15 @@
         ngModel
         #description="ngModel"
         required
-        minlength="10"
+        minlength="25"
       ></textarea>
       <ng-container *ngIf="description.touched">
         <p class="error" *ngIf="description.errors?.['required']">The field with your description is required.</p>
-        <p class="error" *ngIf="description.errors?.['minlength']">Description must be at least 10 characters long.</p>
+        <p class="error" *ngIf="description.errors?.['minlength']">Description must be at least 25 characters long.</p>
       </ng-container>
     </div>
-    <div>
+    <div class="form-control">
       <button class="cancel" (click)="form.resetForm()">Cancel</button>
-      <button class="public">Post</button>
+      <button class="public" [disabled]="form.invalid" (click)="postSeance(form)">Post</button>
     </div>
   </form>

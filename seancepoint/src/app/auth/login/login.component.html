@@ -2,26 +2,30 @@
   <fieldset>
     <h2>Login to SeancePoint</h2>
 
-    <p class="field field-icon">
-      <label for="username"
-        ><span><i class="fas fa-envelope"></i></span
-      ></label>
-      <input
-        class="input-error"
-        type="username"
-        name="username"
-        id="username"
-        placeholder="Username"
-        ngModel
-        #username="ngModel"
-        required
-      />
-    </p>
-    <ng-container *ngIf="username.touched">
-      <p class="error" *ngIf="username.errors?.['required']">
-        Username is required!
+    <div class="form-control">
+      <p class="field field-icon">
+        <label for="username"
+          ><span><i class="fas fa-envelope"></i></span
+        ></label>
+        <input
+          class="input-error"
+          type="username"
+          name="username"
+          id="username"
+          placeholder="Username"
+          ngModel
+          #username="ngModel"
+          required
+        />
       </p>
-    </ng-container>
+      <ng-container *ngIf="username.touched">
+        <p class="error" *ngIf="username.errors?.['required']">
+          Username is required!
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="form-control">
     <p class="field field-icon">
       <label for="password"
         ><span><i class="fas fa-lock"></i></span
@@ -45,6 +49,7 @@
         Password must be at least 4 characters!
       </p>
     </ng-container>
+    </div>
 
     <button [disabled]="form.invalid" (click)="login(form)">Login</button>
 
