@@ -16,3 +16,17 @@ p {
     border-bottom: 1px solid darkorchid;
     width: 200px;
 }
+
+.button {
+    width: 100px;
+    margin: 20px;
+    position: relative;
+    display: inline-block;;
+}
+
+.btn-container {
+    text-align: center;
+    justify-content: space-evenly;
+    display: block;
+    width: 100%;
+}

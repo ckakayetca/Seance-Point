@@ -10,11 +10,19 @@ import { tap } from 'rxjs';
 })
 export class ProfileComponent implements OnInit{
   user: User | undefined;
+  hasSeances: boolean = false;
 
-  constructor(private authSvc: AuthService) {}
+  constructor(private authSvc: AuthService) {
+    this.authSvc.getProfile().subscribe((user) => this.user = user)
+  }
 
   ngOnInit(): void {
-      this.authSvc.getProfile().subscribe((user) => this.user = user)
+      this.authSvc.getProfile().subscribe((user) => {
+        this.user = user
+        if(user.seances.length > 0) {
+          this.hasSeances = true
+        }
+      })
   }
 
 }
