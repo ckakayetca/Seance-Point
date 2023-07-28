@@ -1,1 +1,20 @@
-<p>seances works!</p>
+<h1>Seances Page</h1>
+
+<div class="cards-container">
+  <div class="seance-card" *ngFor="let seance of seanceList">
+    <h3>
+      <a href="#" class="button"><span>{{ seance.title }}</span></a>
+    </h3>
+    <p>{{ seance.type }}</p>
+    <p>{{ seance.price }}$ for an appointment</p>
+    <p>{{ seance.created_at | timeFromNow }}</p>
+  </div>
+  <div class="seance-card" *ngFor="let seance of seanceList">
+    <h3>
+      <a href="#" class="button"><span>{{ seance.title }}</span></a>
+    </h3>
+    <p>{{ seance.type }}</p>
+    <p>{{ seance.price }}$ for an appointment</p>
+    <p>{{ seance.created_at | timeFromNow }}</p>
+  </div>
+</div>
