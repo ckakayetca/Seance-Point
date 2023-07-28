@@ -4,10 +4,13 @@ import { Seance } from "./seance";
 
 
 export interface User {
+    _id: string,
     email: string,
     username: string,
     tel: string,
-    seances: Seance[],
-    appointments: Appointment[],
-    reviews: Review[]
+    seances: string[],
+    appointments: string[],
+    reviews: string[],
+    created_at: Date,
+    updatedAt: Date,
 }

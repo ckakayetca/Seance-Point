@@ -1,1 +1,22 @@
-<p>profile works!</p>
+<h1>Hi, {{user?.username}}! Here is some information about your profile!</h1>
+{{user?._id}}
+<div class="detail">
+    <h2 class="index">Your email:</h2>
+    <p>{{user?.email}}</p>
+</div>
+<div class="detail">
+    <h2 class="index">Your phone number:</h2>
+    <p>{{user?.tel}}</p>
+</div>
+<div class="detail">
+    <h2 class="index">Your email:</h2>
+    <p>{{user?.email}}</p>
+</div>
+<div class="detail">
+    <h2 class="index">You are a member since:</h2>
+    <p>{{user?.created_at | timeFromNow}}</p>
+</div>
+<div class="detail">
+    <h2 class="index">Number of seances created:</h2>
+    <p>{{user?.seances?.length}}</p>
+</div>

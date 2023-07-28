@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.detail {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+p {
+    text-align: center;
+    border-bottom: 1px solid darkorchid;
+    width: 200px;
+}

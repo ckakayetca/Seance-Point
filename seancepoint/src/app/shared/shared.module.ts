@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegexDirective } from './regex.directive';
+import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
 
 
 
 @NgModule({
   declarations: [
-    RegexDirective
+    RegexDirective,
+    TimeFromNowPipe
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    RegexDirective
+    RegexDirective,
+    TimeFromNowPipe
   ]
 })
 export class SharedModule { }

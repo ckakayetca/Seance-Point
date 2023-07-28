@@ -1,4 +1,5 @@
 export interface Seance {
+    _id: string,
     title: string,
     description: string,
     type: string,
@@ -6,4 +7,6 @@ export interface Seance {
     duration: number,
     postedBy: string,
     created_at: Date,
+    updatedAt: Date,
+    __v: number,
 }

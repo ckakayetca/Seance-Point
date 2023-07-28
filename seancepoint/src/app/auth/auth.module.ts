@@ -8,6 +8,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,6 +25,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     AuthRoutingModule,
     FormsModule,
     HttpClientModule,
+    SharedModule,
   ],
   exports: [
     AuthenticationComponent
