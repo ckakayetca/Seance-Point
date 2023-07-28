@@ -11,13 +11,12 @@ export class AuthService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
   user$ = this.user$$.asObservable();
   user: User | undefined;
+  myId: string = '';
 
   subscription: Subscription;
 
   constructor(private api: HttpClient, private errSvc: ErrorService) {
     this.subscription = this.user$.subscribe((user) => {
-      console.log('Subscription activated');
-      console.log(user);
       this.user = user;
     });
   }

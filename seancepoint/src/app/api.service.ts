@@ -35,6 +35,10 @@ export class ApiService {
 
   // specific seance
 
+  getOne(id: string) {
+    return this.http.get<Seance>(`/api/seances/${id}`)
+  }
+
   // edit seance
 
   // update seance
