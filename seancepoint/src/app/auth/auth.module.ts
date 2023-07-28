@@ -7,6 +7,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 
 
@@ -15,13 +16,17 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    AuthenticationComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     FormsModule,
     HttpClientModule,
+  ],
+  exports: [
+    AuthenticationComponent
   ]
 })
 export class AuthModule { }

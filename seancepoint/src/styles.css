@@ -12,11 +12,12 @@ body {
 
 .container {
   width: 90%;
-  margin: auto;
-  padding-bottom: 4.5em;
+  height: 50%;
+  margin: 100px 5%;
+  padding-bottom: 2em;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
@@ -27,7 +28,7 @@ button:hover {
 
 @media (min-width: 800px) {
   html {
-      font-size: 14px;
+      font-size: 12px;
   }
 }
 

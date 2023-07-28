@@ -6,6 +6,7 @@ import { MySeancesComponent } from './my-seances/my-seances.component';
 import { SeanceEditComponent } from './seance-edit/seance-edit.component';
 import { SeancesComponent } from './seances/seances.component';
 import { SeanceRoutingModule } from './seance-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +20,7 @@ import { SeanceRoutingModule } from './seance-routing.module';
   ],
   imports: [
     CommonModule,
+    FormsModule
   ],
   exports: [
     MySeancesComponent,

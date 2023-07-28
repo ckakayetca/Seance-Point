@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ErrorService } from 'src/app/core/error/error.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private authSvc: AuthService, private router: Router) {}
+  constructor(
+    private authSvc: AuthService,
+    private router: Router,
+    private errSvc: ErrorService
+  ) {}
 
   login(form: NgForm) {
-    const {
-      username,
-      password
-    } = form.value
+    const { username, password } = form.value;
 
-    this.authSvc.login(username, password).subscribe((res) => {
-      console.log(res)
-      this.router.navigate(['/seances'])
-    })
+    this.authSvc.login(username, password).subscribe({
+      next: (res) => {
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        this.errSvc.setError(error)
+      },
+    });
   }
 }

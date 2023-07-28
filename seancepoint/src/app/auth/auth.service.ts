@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap, catchError, of } from 'rxjs';
 import { User } from '../types/user';
+import { ErrorService } from '../core/error/error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,10 @@ export class AuthService implements OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private api: HttpClient) {
+  constructor(private api: HttpClient, private errSvc: ErrorService) {
     this.subscription = this.user$.subscribe((user) => {
-      console.log('Subscription activated')
-      console.log(user)
+      console.log('Subscription activated');
+      console.log(user);
       this.user = user;
     });
   }
@@ -44,12 +45,11 @@ export class AuthService implements OnDestroy {
 
   // login
   login(username: string, password: string) {
-    return this.api.post<User>(`/api/users/login`, {
-      username,
-      password,
-    }).pipe(tap((user) => {
-      this.user$$.next(user);
-    }))
+    return this.api
+      .post<User>(`/api/users/login`, {
+        username,
+        password,
+      }).pipe(tap((user) => this.user$$.next(user)))
   }
 
   // get profile info (verify user)
