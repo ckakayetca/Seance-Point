@@ -11,7 +11,7 @@ export class DatePipe implements PipeTransform {
       return
     }
 
-    return moment(date).format('MMMM, Do, YYYY, hh:mm:ss, A');
+    return moment(date).format('MMMM Do YYYY, hh:mm A');
   }
 
 }
