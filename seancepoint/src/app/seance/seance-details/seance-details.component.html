@@ -31,7 +31,14 @@
     </div>
   </div>
 
-  <div class="appointment-con" *ngIf="isLoggedIn && !isOwner">
+  <div class="appointment-con" *ngIf="hasAppointment">
+    <h1>You have an appointment for this seance! Have fun :)</h1>
+  </div>
+
+  <div
+    class="appointment-con"
+    *ngIf="isLoggedIn && !isOwner && !hasAppointment"
+  >
     <h1>Here you can make an appointment!</h1>
     <form class="appointment" #dateForm="ngForm">
       <div class="form-control">
@@ -42,14 +49,16 @@
           ngModel
           #date="ngModel"
           placeholder="Date"
+          [min]="tomorrow"
+          [matDatepickerFilter]="dateFilter"
         />
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker #picker [touchUi]="true"></mat-datepicker>
       </div>
-      <button>Make an appointment</button>
+      <button (click)="appoint(dateForm)">Make an appointment</button>
     </form>
   </div>
 </div>
@@ -71,7 +80,11 @@
   </div>
 </div>
 
-<h2 class="button" *ngIf="!showReviewForm && isLoggedIn && !isOwner" (click)="toggleReview()">
+<h2
+  class="button"
+  *ngIf="!showReviewForm && isLoggedIn && !isOwner"
+  (click)="toggleReview()"
+>
   Leave a review!
 </h2>
 <h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>

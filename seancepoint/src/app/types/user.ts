@@ -9,7 +9,7 @@ export interface User {
     username: string,
     tel: string,
     seances: string[],
-    appointments: string[],
+    appointments: Appointment[],
     reviews: string[],
     created_at: Date,
     updatedAt: Date,

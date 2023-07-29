@@ -1,3 +1,5 @@
+import { Appointment } from "./appointment";
+import { Review } from "./review";
 import { User } from "./user";
 
 export interface Seance {
@@ -11,6 +13,8 @@ export interface Seance {
     created_at: Date,
     updatedAt: Date,
     __v: number,
+    reviews: Review[],
+    appointments: Appointment[],
 }
 
 export interface SeanceRaw {

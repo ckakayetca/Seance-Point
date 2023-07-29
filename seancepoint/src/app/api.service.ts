@@ -54,6 +54,10 @@ export class ApiService {
 
   // create appointment
 
+  appoint(seanceId: string, date: Date) {
+    return this.http.post(`/api/seances/${seanceId}/appointments`, { date });
+  }
+
   // leave review
 
   // edit review

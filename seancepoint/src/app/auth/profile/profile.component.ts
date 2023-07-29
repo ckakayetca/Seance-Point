@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit{
 
   ngOnInit(): void {
       this.authSvc.getProfile().subscribe((user) => {
+        console.log(user)
         this.user = user
         if(user.seances.length > 0) {
           this.hasSeances = true

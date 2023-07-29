@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     NewSeanceComponent,
     SeanceDetailsComponent,
     SeanceEditComponent,
-    SeancesComponent
+    SeancesComponent,
   ],
   imports: [
     CommonModule,

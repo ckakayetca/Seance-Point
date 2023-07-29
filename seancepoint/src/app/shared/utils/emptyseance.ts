@@ -33,4 +33,6 @@ export const emptySeance: Seance = {
     created_at: new Date(),
     updatedAt: new Date(),
     __v: 0,
+    reviews: [],
+    appointments: [],
   }
