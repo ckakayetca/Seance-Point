@@ -1,7 +1,9 @@
 .seance {
-    width: 60%;
-    margin: 2em auto 0;
+    margin: 10px auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 input {

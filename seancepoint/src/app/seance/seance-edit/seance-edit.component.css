@@ -1,7 +1,9 @@
 .seance {
-    width: 60%;
-    margin: 2em auto 0;
-    text-align: center;;
+    margin: 10px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 input {
@@ -12,4 +14,8 @@ input {
 h1 {
     text-align: center;
     font-size: 2rem;
+}
+
+.form-control input {
+    border-bottom: 2px solid darkorchid;
 }
