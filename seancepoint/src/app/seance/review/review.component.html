@@ -15,8 +15,8 @@
                 <p>{{ review.text }}</p>
             </div>
             <div class="review-owner-buttons" *ngIf="checkIfOwner(review, user)">
-                <button>Edit</button>
-                <button>Delete</button>
+                <button (click)="toggleEditMode()">Edit</button>
+                <button (click)="deleteReview()">Delete</button>
             </div>
     </div>
 </div>
@@ -26,11 +26,14 @@
 
 
 <!-- toggle review form -->
-<h2 class="button" *ngIf="!showReviewForm && isLoggedIn && !isOwner" (click)="toggleReview()"> Leave a review! </h2>
-<h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>
+<ng-container *ngIf="!userAlreadyReviewed">
+    <h2 class="button" *ngIf="!showReviewForm && isLoggedIn && !isOwner" (click)="toggleReview()"> Leave a review! </h2>
+    <h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>
+</ng-container>
 
 <!-- review form -->
-<div class="leave-review" *ngIf="showReviewForm">
+<div class="leave-review" *ngIf="showReviewForm || editMode">
+    <h2 class="button" *ngIf="editMode" (click)="toggleEditMode()">Hide</h2>
     <form class="review" #review="ngForm">
         <div class="form-control">
             <label for="rating">Rating</label>
@@ -62,7 +65,8 @@
             ngModel
             ></textarea>
         </div>
-        <button (click)="leaveReview(review)" [disabled]="review.invalid">Submit</button>
+        <button (click)="leaveReview(review)" [disabled]="review.invalid" *ngIf="!editMode">Submit</button>
+        <button (click)="editReview(review)" [disabled]="review.invalid" *ngIf="editMode">Edit Review</button>
     </form>
 
 </div>

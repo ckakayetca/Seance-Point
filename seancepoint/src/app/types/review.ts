@@ -1,6 +1,7 @@
 import { User } from "./user";
 
 export interface Review {
+    _id: string,
     seance: string,
     postedBy: User,
     rating: number,

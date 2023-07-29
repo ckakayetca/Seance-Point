@@ -21,6 +21,7 @@ export class ReviewComponent implements OnInit {
   reviewsList: Review[] = [];
   noReviews: boolean = true;
   editMode: boolean = false;
+  userAlreadyReviewed: boolean = false;
 
   get user(): User {
     if (!this.authSvc.user) {
@@ -45,7 +46,15 @@ export class ReviewComponent implements OnInit {
     this.api.getReviews(this.seanceId).subscribe({
       next: (r) => {
         console.log(r);
+
         this.reviewsList = r;
+
+        let userIds = r.map((review) => review.postedBy._id)
+
+        if(userIds.includes(this.user._id)) {
+          this.userAlreadyReviewed = true;
+          console.log(`You have a review here`)
+        }
         if (r.length > 0) {
           this.noReviews = false;
         }
@@ -78,6 +87,59 @@ export class ReviewComponent implements OnInit {
 
   toggleReview() {
     this.showReviewForm = !this.showReviewForm;
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+
+  editReview(form: NgForm) {
+    const myId = this.user._id;
+    const { rating, reviewText } = form.value;
+    let reviewId = '';
+    for(let r of this.reviewsList) {
+      if(r.postedBy._id === myId) {
+        reviewId = r._id;
+        break;
+      }
+    }
+
+    this.api
+      .editReview(this.seanceId, reviewId, {
+        seance: this.seanceId,
+        postedBy: myId,
+        rating,
+        text: reviewText,
+      })
+      .subscribe({
+        next: (s) => {
+          console.log(s);
+          location.reload();
+        },
+        error: (e) => {
+          this.errSvc.setError(e);
+        },
+      });
+  }
+
+  deleteReview() {
+    const myId = this.user._id;
+    let reviewId = '';
+    for(let r of this.reviewsList) {
+      if(r.postedBy._id === myId) {
+        reviewId = r._id;
+        break;
+      }
+    }
+
+    this.api.delReview(this.seanceId, reviewId).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (e) => {
+        this.errSvc.setError(e)
+      }
+    })
   }
 
   checkIfOwner = (r: Review, u: User): boolean => {

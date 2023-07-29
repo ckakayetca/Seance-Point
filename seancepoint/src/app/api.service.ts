@@ -72,5 +72,13 @@ export class ApiService {
 
   // edit review
 
+  editReview(seanceId: string, reviewId: string, data: ReviewRaw) {
+    return this.http.put(`/api/seances/${seanceId}/reviews/${reviewId}`, data);
+  }
+
   // delete review
+
+  delReview(seanceId: string, reviewId: string) {
+    return this.http.delete(`/api/seances/${seanceId}/reviews/${reviewId}`)
+  }
 }
