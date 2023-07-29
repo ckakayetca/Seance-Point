@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewSeanceComponent } from './new-seance/new-seance.component';
 import { SeanceDetailsComponent } from './seance-details/seance-details.component';
-import { MySeancesComponent } from './my-seances/my-seances.component';
 import { SeanceEditComponent } from './seance-edit/seance-edit.component';
 import { SeancesComponent } from './seances/seances.component';
 import { SeanceRoutingModule } from './seance-routing.module';
@@ -16,7 +15,6 @@ import { MatNativeDateModule } from '@angular/material/core'
   declarations: [
     NewSeanceComponent,
     SeanceDetailsComponent,
-    MySeancesComponent,
     SeanceEditComponent,
     SeancesComponent
   ],
@@ -29,7 +27,6 @@ import { MatNativeDateModule } from '@angular/material/core'
     MatNativeDateModule
   ],
   exports: [
-    MySeancesComponent,
     SeanceRoutingModule
   ]
 })

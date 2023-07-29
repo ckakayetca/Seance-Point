@@ -10,11 +10,10 @@
     </p>
   </div>
   <div class="owner-buttons" *ngIf="isOwner">
-    <button routerLink="/seances/{{currentSeance._id}}/edit">Edit</button>
+    <button routerLink="/seances/{{ currentSeance._id }}/edit">Edit</button>
     <button (click)="deleteSeance()">Delete</button>
   </div>
   <div class="description">
-    Description:
     <span>{{ currentSeance.description }}</span>
   </div>
   <div class="details">
@@ -32,25 +31,27 @@
     </div>
   </div>
 
-  <h1>Here you can make an appointment!</h1>
-  <form class="appointment" #dateForm="ngForm">
-    <div class="form-control">
-      <input
-        matInput
-        [matDatepicker]="picker"
-        name="date"
-        ngModel
-        #date="ngModel"
-        placeholder="Date"
-      />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </div>
-    <button>Make an appointment</button>
-  </form>
+  <div class="appointment-con" *ngIf="isLoggedIn && !isOwner">
+    <h1>Here you can make an appointment!</h1>
+    <form class="appointment" #dateForm="ngForm">
+      <div class="form-control">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          name="date"
+          ngModel
+          #date="ngModel"
+          placeholder="Date"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <button>Make an appointment</button>
+    </form>
+  </div>
 </div>
 
 <div class="reviews-container">
@@ -70,7 +71,9 @@
   </div>
 </div>
 
-<h2 class="button" *ngIf="!showReviewForm" (click)="toggleReview()">Leave a review!</h2>
+<h2 class="button" *ngIf="!showReviewForm && isLoggedIn && !isOwner" (click)="toggleReview()">
+  Leave a review!
+</h2>
 <h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>
 <div class="leave-review" *ngIf="showReviewForm">
   <form class="review" #review="ngForm">

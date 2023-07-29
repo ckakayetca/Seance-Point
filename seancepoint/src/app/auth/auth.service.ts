@@ -33,13 +33,13 @@ export class AuthService implements OnDestroy {
     password: string,
     rePassword: string
   ) {
-    return this.api.post(`/api/users/register`, {
+    return this.api.post<User>(`/api/users/register`, {
       username,
       email,
       tel,
       password,
       rePassword,
-    });
+    })
   }
 
   // login

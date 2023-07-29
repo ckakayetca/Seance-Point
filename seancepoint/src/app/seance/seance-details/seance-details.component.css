@@ -100,3 +100,9 @@ h2 {
     justify-content: center;
     text-align: center;
 }
+
+.appointment-con {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}

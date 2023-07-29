@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { SharedModule } from '../shared/shared.module';
+import { MySeancesComponent } from './my-seances/my-seances.component';
+import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 
 
 
@@ -18,7 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     RegisterComponent,
     ProfileComponent,
     ProfileEditComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    MySeancesComponent,
+    MyAppointmentsComponent
   ],
   imports: [
     CommonModule,
