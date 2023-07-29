@@ -1,6 +1,5 @@
 <h1>Hi, {{ user.username }}!</h1>
 <h1>Here is some information about your profile!</h1>
-{{ user._id }}
 <div class="detail">
   <h2 class="index">Your email:</h2>
   <p>{{ user.email }}</p>
@@ -21,8 +20,17 @@
   <h2 class="index">Number of seances created:</h2>
   <p>{{ user.seances.length }}</p>
 </div>
+<div class="detail">
+  <h2 class="index">Number of appointments:</h2>
+  <p>{{ user.appointments.length }}</p>
+</div>
+<div class="detail">
+  <h2 class="index">Number of reviews left:</h2>
+  <p>{{ user.reviews.length }}</p>
+</div>
 
 <div class="btn-container">
+  <div class="button" *ngIf="user.seances">My Seances</div>
   <div class="button" *ngIf="hasSeances">My Seances</div>
   <div class="button">Edit Profile</div>
 </div>
