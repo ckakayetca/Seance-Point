@@ -63,21 +63,19 @@
   </div>
 </div>
 
-<div class="reviews-container">
+<div class="reviews-container" *ngIf="!noReviews">
   <h2>Reviews for this seance:</h2>
-  <div class="review-card">
+  <div class="review-card" *ngFor="let review of reviewsList">
     <header class="header">
-      <p><span>User</span> rated <span>5 stars</span></p>
+      <p><span>{{review.postedBy.username}}</span> rated <span>{{review.rating}} stars</span></p>
     </header>
-    <div class="review-content">
-      <p>Review comment</p>
+    <div class="review-content" *ngIf="review.text">
+      <p>{{review.text}}</p>
     </div>
   </div>
-  <div class="review-card">
-    <header class="header">
-      <p><span>User</span> rated <span>5 stars</span></p>
-    </header>
-  </div>
+</div>
+<div class="reviews-container" *ngIf="noReviews">
+  <h2>There are no reviews for this seance</h2>
 </div>
 
 <h2
@@ -115,7 +113,7 @@
         ngModel
       ></textarea>
     </div>
-    <button>Submit</button>
+    <button (click)="leaveReview(review)">Submit</button>
   </form>
 
   <div class="errors">

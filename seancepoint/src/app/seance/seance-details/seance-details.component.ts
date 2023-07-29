@@ -8,6 +8,7 @@ import { User } from 'src/app/types/user';
 import { emptySeance, emptyUser } from '../../shared/utils/emptyseance';
 import { NgForm } from '@angular/forms';
 import { DateFilterFn } from '@angular/material/datepicker';
+import { Review } from 'src/app/types/review';
 
 @Component({
   selector: 'app-seance-details',
@@ -21,13 +22,15 @@ export class SeanceDetailsComponent implements OnInit {
   tomorrow: Date = new Date();
   takenDatesList: string[] = [];
   hasAppointment: boolean = false;
+  reviewsList: Review[] = [];
+  noReviews: boolean = true;
 
   get isLoggedIn(): boolean {
     return this.authSvc.isLoggedIn;
   }
 
   get user(): User {
-    if(!this.authSvc.user) {
+    if (!this.authSvc.user) {
       return emptyUser;
     }
     return this.authSvc.user;
@@ -78,16 +81,26 @@ export class SeanceDetailsComponent implements OnInit {
           new Date(s.date).toDateString()
         );
 
-
         // check if current user has an appointment
-        const userIds = s.appointments.map((e) => e.userId)
-        if(userIds.includes(myId)) {
+        const userIds = s.appointments.map((e) => e.userId);
+        if (userIds.includes(myId)) {
           this.hasAppointment = true;
         }
-
       },
       error: (e) => this.errSvc.setError(e),
     });
+
+    // get reviews
+    this.api.getReviews(seanceId).subscribe({
+      next: (r) => {
+        console.log(r)
+        this.reviewsList = r;
+        if(r.length > 0) {
+          this.noReviews = false;
+        }
+      },
+      error: (e) => this.errSvc.setError(e)
+    })
   }
 
   // delete seance
@@ -125,6 +138,23 @@ export class SeanceDetailsComponent implements OnInit {
 
   // leave review
   leaveReview(form: NgForm) {
-    const { rating, reviewText } = form.value
+    const myId = this.user._id;
+    const seanceId = this.currentSeance._id;
+    const { rating, reviewText } = form.value;
+
+    this.api.leaveReview(seanceId, {
+      seance: seanceId,
+      postedBy: myId,
+      rating,
+      text: reviewText
+    }).subscribe({
+      next: (s) => {
+        console.log(s);
+        location.reload();
+      },
+      error: (e) => {
+        this.errSvc.setError(e);
+      },
+    });
   }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Seance, SeanceRaw } from './types/seance';
 import { catchError } from 'rxjs';
+import { Review, ReviewRaw } from './types/review';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class ApiService {
       type,
       price,
       duration,
-      description
+      description,
     });
   }
   // read seances
@@ -37,7 +38,7 @@ export class ApiService {
   // specific seance
 
   getOne(id: string) {
-    return this.http.get<Seance>(`/api/seances/${id}`)
+    return this.http.get<Seance>(`/api/seances/${id}`);
   }
 
   // edit seance
@@ -59,6 +60,15 @@ export class ApiService {
   }
 
   // leave review
+
+  leaveReview(seanceId: string, data: ReviewRaw) {
+    return this.http.post(`/api/seances/${seanceId}/reviews`, data);
+  }
+
+  // get reviews
+  getReviews(seanceId: string) {
+    return this.http.get<Review[]>(`/api/seances/${seanceId}/reviews`);
+  }
 
   // edit review
 
