@@ -9,8 +9,8 @@ import { SeanceRoutingModule } from './seance-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -24,7 +24,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MySeancesComponent,

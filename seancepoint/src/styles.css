@@ -8,6 +8,8 @@ body {
     background-color: rgb(250, 193, 248);
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -79,6 +81,7 @@ fieldset {
   width: 100%;
   padding: 0;
   font-size: 18px;
+  text-align: center;
   color: black;
 }
 
@@ -112,3 +115,6 @@ fieldset {
       font-size: 18px;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

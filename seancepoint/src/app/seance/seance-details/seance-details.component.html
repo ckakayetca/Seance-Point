@@ -1,4 +1,111 @@
-<h1>{{currentSeance?.title}}</h1>
+<div class="details-container">
+  <h1>{{ currentSeance?.title }}</h1>
+  <div class="owner-details">
+    <p>
+      Posted by
+      <span
+        >{{ currentSeance?.postedBy?.username }}
+        {{ currentSeance?.created_at | timeFromNow }}</span
+      >
+    </p>
+  </div>
+  <div class="owner-buttons" *ngIf="isOwner">
+    <button>Edit</button>
+    <button>Delete</button>
+  </div>
+  <div class="description">
+    Description:
+    <span>{{ currentSeance?.description }}</span>
+  </div>
+  <div class="details">
+    <div class="detail">
+      Type:
+      <span>{{ currentSeance?.type }}</span>
+    </div>
+    <div class="detail">
+      Duration:
+      <span>{{ currentSeance?.duration }} hours</span>
+    </div>
+    <div class="detail">
+      Price:
+      <span>{{ currentSeance?.price }}$</span>
+    </div>
+  </div>
 
+  <h1>Here you can make an appointment!</h1>
+  <form class="appointment" #form="ngForm">
+    <div class="form-control">
+      <input
+        matInput
+        [matDatepicker]="picker"
+        ngModel
+        #date="ngModel"
+        placeholder="Date"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+    <button>Make an appointment</button>
+  </form>
+</div>
 
-<p>{{currentSeance | json}}</p>
+<div class="reviews-container">
+  <h2>Reviews for this seance:</h2>
+  <div class="review-card">
+    <header class="header">
+      <p><span>User</span> rated <span>5 stars</span></p>
+    </header>
+    <div class="review-content">
+      <p>Review comment</p>
+    </div>
+  </div>
+  <div class="review-card">
+    <header class="header">
+      <p><span>User</span> rated <span>5 stars</span></p>
+    </header>
+  </div>
+</div>
+
+<h2 class="button" *ngIf="!showReviewForm" (click)="toggleReview()">Leave a review!</h2>
+<h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>
+<div class="leave-review" *ngIf="showReviewForm">
+  <form class="review" #review="ngForm">
+    <div class="form-control">
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        name="rating"
+        id="rating"
+        placeholder="1-5"
+        ngModel
+        #rating="ngModel"
+        min="1"
+        max="5"
+        required
+      />
+    </div>
+    <div class="form-control">
+      <label for="reviewText">Opinion</label>
+
+      <textarea
+        type="text"
+        name="reviewText"
+        id="reviewText"
+        #reviewText="ngModel"
+        ngModel
+      ></textarea>
+    </div>
+    <button>Submit</button>
+  </form>
+
+  <div class="errors">
+    <ng-container *ngIf="rating?.touched">
+      <p class="error" *ngIf="rating?.errors?.['required']">
+        Rating is required!
+      </p>
+    </ng-container>
+  </div>
+</div>

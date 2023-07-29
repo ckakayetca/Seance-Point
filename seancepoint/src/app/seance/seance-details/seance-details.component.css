@@ -1,0 +1,102 @@
+.appointment {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+input {
+  width: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.owner-details {
+  text-align: center;
+}
+
+.owner-buttons {
+  text-align: center;
+}
+
+.description {
+  margin: 30px;
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+}
+
+.detail {
+  margin: 30px 30px;
+  border: 2px solid darkorchid;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+}
+
+.reviews-container {
+  padding: 10px;
+}
+
+.review-card {
+  height: 100px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.leave-review {
+    display: flex;
+    flex-direction: column;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.review input {
+    margin: 0px 30px;
+}
+
+.review textarea {
+    margin: 10px;
+    font-size: 16px;
+    border-bottom: 2px solid darkorchid;
+    width: 100%;
+    height: 80px;
+}
+
+.errors {
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

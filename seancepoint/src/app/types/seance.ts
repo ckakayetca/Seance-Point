@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Seance {
     _id: string,
     title: string,
@@ -5,7 +7,7 @@ export interface Seance {
     type: string,
     price: number,
     duration: number,
-    postedBy: string,
+    postedBy: User,
     created_at: Date,
     updatedAt: Date,
     __v: number,

@@ -14,6 +14,7 @@ import { User } from 'src/app/types/user';
 export class SeanceDetailsComponent implements OnInit {
   currentSeance: Seance | undefined;
   isOwner: boolean = false;
+  showReviewForm: boolean = false;
 
   get isLoggedIn(): boolean {
     return this.authSvc.isLoggedIn;
@@ -41,8 +42,15 @@ export class SeanceDetailsComponent implements OnInit {
     }
 
     this.api.getOne(seanceId).subscribe({
-      next: (s) => this.currentSeance = s,
-      error: (e) => this.errSvc.setError(e)
+      next: (s) => {
+        this.currentSeance = s
+        console.log(s)
+      },
+      error: (e) => this.errSvc.setError(e),
     });
+  }
+
+  toggleReview() {
+    this.showReviewForm = !this.showReviewForm
   }
 }
