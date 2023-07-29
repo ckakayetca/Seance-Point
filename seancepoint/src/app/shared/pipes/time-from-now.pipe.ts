@@ -6,7 +6,7 @@ import * as moment from 'moment'
 })
 export class TimeFromNowPipe implements PipeTransform {
 
-  transform(date: Date | undefined): unknown {
+  transform(date: Date | string): unknown {
     if(!date) {
       return
     }

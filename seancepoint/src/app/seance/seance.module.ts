@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     SeanceDetailsComponent,
     SeanceEditComponent,
     SeancesComponent,
+    ReviewComponent,
   ],
   imports: [
     CommonModule,

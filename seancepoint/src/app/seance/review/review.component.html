@@ -1,0 +1,70 @@
+
+<!-- reviews -->
+<div class="reviews-container">
+    <div class="reviews-container" *ngIf="!noReviews">
+        <h2>Reviews for this seance:</h2>
+        <div class="review-card" *ngFor="let review of reviewsList">
+            <header class="header">
+                <p>
+                    <span *ngIf="!checkIfOwner(review, user)">{{review.postedBy.username}}</span>
+                    <span *ngIf="checkIfOwner(review, user)">You</span>
+                    rated <span>{{ review.rating }} stars, {{ review.created_at | timeFromNow }}</span>
+                </p>
+            </header>
+            <div class="review-content" *ngIf="review.text">
+                <p>{{ review.text }}</p>
+            </div>
+            <div class="review-owner-buttons" *ngIf="checkIfOwner(review, user)">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+    </div>
+</div>
+<div class="reviews-container" *ngIf="noReviews">
+    <h2>There are no reviews for this seance</h2>
+</div>
+
+
+<!-- toggle review form -->
+<h2 class="button" *ngIf="!showReviewForm && isLoggedIn && !isOwner" (click)="toggleReview()"> Leave a review! </h2>
+<h2 class="button" *ngIf="showReviewForm" (click)="toggleReview()">Hide</h2>
+
+<!-- review form -->
+<div class="leave-review" *ngIf="showReviewForm">
+    <form class="review" #review="ngForm">
+        <div class="form-control">
+            <label for="rating">Rating</label>
+            <input
+            type="number"
+            name="rating"
+            id="rating"
+            placeholder="1-5"
+            ngModel
+            #rating="ngModel"
+            min="1"
+            max="5"
+            required
+            />
+        </div>
+        <div class="errors">
+            <ng-container *ngIf="rating?.touched">
+                <p class="error" *ngIf="rating?.errors?.['required']"> Rating is required!</p>
+            </ng-container>
+        </div>
+        <div class="form-control">
+            <label for="reviewText">Opinion</label>
+
+            <textarea
+            type="text"
+            name="reviewText"
+            id="reviewText"
+            #reviewText="ngModel"
+            ngModel
+            ></textarea>
+        </div>
+        <button (click)="leaveReview(review)" [disabled]="review.invalid">Submit</button>
+    </form>
+
+</div>
+
+</div>

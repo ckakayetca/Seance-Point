@@ -17,13 +17,11 @@ import { Review } from 'src/app/types/review';
 })
 export class SeanceDetailsComponent implements OnInit {
   currentSeance: Seance = emptySeance;
+  seanceId: string = '';
   isOwner: boolean = false;
-  showReviewForm: boolean = false;
   tomorrow: Date = new Date();
   takenDatesList: string[] = [];
   hasAppointment: boolean = false;
-  reviewsList: Review[] = [];
-  noReviews: boolean = true;
 
   get isLoggedIn(): boolean {
     return this.authSvc.isLoggedIn;
@@ -96,18 +94,6 @@ export class SeanceDetailsComponent implements OnInit {
       },
       error: (e) => this.errSvc.setError(e),
     });
-
-    // get reviews
-    this.api.getReviews(seanceId).subscribe({
-      next: (r) => {
-        console.log(r)
-        this.reviewsList = r;
-        if(r.length > 0) {
-          this.noReviews = false;
-        }
-      },
-      error: (e) => this.errSvc.setError(e)
-    })
   }
 
   // delete seance
@@ -122,12 +108,6 @@ export class SeanceDetailsComponent implements OnInit {
       },
     });
   }
-
-  // toggle review form
-  toggleReview() {
-    this.showReviewForm = !this.showReviewForm;
-  }
-
   // create appointment
   appoint(form: NgForm) {
     const { date } = form.value;
@@ -136,28 +116,6 @@ export class SeanceDetailsComponent implements OnInit {
       next: (a) => {
         console.log(a);
         this.router.navigate(['/auth/profile']);
-      },
-      error: (e) => {
-        this.errSvc.setError(e);
-      },
-    });
-  }
-
-  // leave review
-  leaveReview(form: NgForm) {
-    const myId = this.user._id;
-    const seanceId = this.currentSeance._id;
-    const { rating, reviewText } = form.value;
-
-    this.api.leaveReview(seanceId, {
-      seance: seanceId,
-      postedBy: myId,
-      rating,
-      text: reviewText
-    }).subscribe({
-      next: (s) => {
-        console.log(s);
-        location.reload();
       },
       error: (e) => {
         this.errSvc.setError(e);

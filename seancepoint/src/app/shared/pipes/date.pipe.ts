@@ -6,7 +6,7 @@ import * as moment from 'moment'
 })
 export class DatePipe implements PipeTransform {
 
-  transform(date: Date): string | undefined {
+  transform(date: Date | string): string | undefined {
     if (!date) {
       return
     }

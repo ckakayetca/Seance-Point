@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from 'src/app/types/user';
 import { tap } from 'rxjs';
+import { emptyUser } from 'src/app/shared/utils/emptyseance';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import { tap } from 'rxjs';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  user: User | undefined;
+  user: User = emptyUser;
   hasSeances: boolean = false;
 
   constructor(private authSvc: AuthService) {
