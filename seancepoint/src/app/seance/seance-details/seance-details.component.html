@@ -67,10 +67,14 @@
   <h2>Reviews for this seance:</h2>
   <div class="review-card" *ngFor="let review of reviewsList">
     <header class="header">
-      <p><span>{{review.postedBy.username}}</span> rated <span>{{review.rating}} stars</span></p>
+      <p><span *ngIf="checkIfOwner(review, user)">{{review.postedBy.username}}</span> rated <span>{{review.rating}} stars</span></p>
     </header>
     <div class="review-content" *ngIf="review.text">
       <p>{{review.text}}</p>
+    </div>
+    <div class="review-owner-buttons" *ngIf="checkIfOwner(review, user)">
+      <button>Edit</button>
+      <button>Delete</button>
     </div>
   </div>
 </div>

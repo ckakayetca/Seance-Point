@@ -48,6 +48,13 @@ export class SeanceDetailsComponent implements OnInit {
     return true;
   };
 
+  checkIfOwner = (r: Review, u: User): boolean => {
+    if(r.postedBy._id == u._id) {
+      return true;
+    }
+    return false;
+  }
+
   // constructor
   constructor(
     private api: ApiService,
