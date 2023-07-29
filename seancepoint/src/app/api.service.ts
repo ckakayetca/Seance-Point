@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Seance } from './types/seance';
+import { Seance, SeanceRaw } from './types/seance';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -41,9 +42,15 @@ export class ApiService {
 
   // edit seance
 
-  // update seance
+  editSeance(id: string, data: SeanceRaw) {
+    return this.http.put(`/api/seances/${id}`, data);
+  }
 
   // delete seance
+
+  deleteSeance(id: string) {
+    return this.http.delete(`/api/seances/${id}`);
+  }
 
   // create appointment
 

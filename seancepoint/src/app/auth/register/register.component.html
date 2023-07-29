@@ -3,69 +3,79 @@
     <h2>Registration</h2>
 
     <!-- username -->
-    <p class="field field-icon">
-      <input
-        class="input-error"
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Username"
-        ngModel
-        #username="ngModel"
-      />
-    </p>
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
+          class="input-error"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          ngModel
+          #username="ngModel"
+        />
+      </p>
+    </div>
 
     <!-- email -->
-    <p class="field field-icon">
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="E-mail"
-        ngModel
-        #email="ngModel"
-      />
-    </p>
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+          ngModel
+          #email="ngModel"
+        />
+      </p>
+    </div>
 
     <!-- telephone -->
-    <p class="field field-icon">
-      <input
+    <div class="form-control">
+
+      <p class="field field-icon">
+        <input
         type="text"
         name="tel"
         id="tel"
         placeholder="+359 123 456 789"
         ngModel
         #tel="ngModel"
-      />
-    </p>
+        />
+      </p>
+    </div>
 
-    <!-- password -->
-    <ng-container>
-      <p class="field field-icon">
-        <input
+      <!-- password -->
+      <div class="form-control">
+        <p class="field field-icon">
+          <input
           type="password"
           name="password"
           id="password"
           placeholder="******"
           #password="ngModel"
           ngModel
-        />
-      </p>
+          />
+        </p>
+      </div>
 
       <!-- rePassword -->
-      <p class="field field-icon">
-        <input
+      <div class="form-control">
+
+        <p class="field field-icon">
+          <input
           type="password"
           name="rePassword"
           id="rePassword"
           placeholder="******"
           ngModel
           #rePassword="ngModel"
-        />
-      </p>
+          />
+        </p>
+      </div>
 
       <button (click)="register(form)">Create Account</button>
-    </ng-container>
 
     <p class="text-center">
       Have an account?

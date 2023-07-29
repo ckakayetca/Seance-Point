@@ -1,1 +1,98 @@
-<p>seance-edit works!</p>
+<h1>Edit Seance</h1>
+<form #form="ngForm" class="seance">
+    <div class="form-control">
+      <label for="title">Title *</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        required
+        minlength="10"
+        #title="ngModel"
+        [(ngModel)]="currentSeance.title"
+      >
+
+      <ng-container *ngIf="title.touched">
+        <p class="error" *ngIf="title.errors?.['required']">Title is required.</p>
+        <p class="error" *ngIf="title.errors?.['minlength']">Title must be at least 10 characters long.</p>
+      </ng-container>
+    </div>
+    <div class="form-control">
+      <label for="type">Type *</label>
+      <input
+        type="text"
+        name="type"
+        id="type"
+        required
+        #type="ngModel"
+        [appRegex]="typeRegex"
+        ngModel
+        [(ngModel)]="currentSeance.type"
+
+      />
+
+      <ng-container *ngIf="type.touched">
+        <p class="error" *ngIf="type.errors?.['required']">Type is required.</p>
+        <p class="error" *ngIf="type.errors?.['regexValidator']">Invalid input</p>
+      </ng-container>
+    </div>
+    <div class="form-control">
+      <label for="price">Price *</label>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        required
+        min="0"
+        #price="ngModel"
+        ngModel
+        [(ngModel)]="currentSeance.price"
+
+      />
+      <ng-container *ngIf="price.touched">
+        <p class="error" *ngIf="price.errors?.['required']">Price is required.</p>
+        <p class="error" *ngIf="price.errors?.['min']">Price cannot be less than 0</p>
+      </ng-container>
+    </div>
+    <div class="form-control">
+      <label for="duration">Duration (in hours) *</label>
+      <input
+        type="number"
+        name="duration"
+        id="duration"
+        required
+        min="1"
+        #duration="ngModel"
+        ngModel
+        [(ngModel)]="currentSeance.duration"
+
+      />
+      <ng-container *ngIf="duration.touched">
+        <p class="error" *ngIf="duration.errors?.['required']">Price is required.</p>
+        <p class="error" *ngIf="duration.errors?.['min']">Seance duration cannot be less than 1 hour!</p>
+      </ng-container>
+    </div>
+    <div class="form-control">
+      <label for="description">Description *</label>
+      <textarea
+        type="text"
+        name="description"
+        id="description"
+        rows="8"
+        class="height"
+        ngModel
+        #description="ngModel"
+        required
+        minlength="25"
+        [(ngModel)]="currentSeance.description"
+      ></textarea>
+      <ng-container *ngIf="description.touched">
+        <p class="error" *ngIf="description.errors?.['required']">The field with your description is required.</p>
+        <p class="error" *ngIf="description.errors?.['minlength']">Description must be at least 25 characters long.</p>
+      </ng-container>
+    </div>
+    <div class="form-control">
+      <button class="cancel" (click)="form.resetForm()">Cancel</button>
+      <button class="public" [disabled]="form.invalid" (click)="submitForm(form)">Post</button>
+    </div>
+  </form>

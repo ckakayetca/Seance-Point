@@ -1,43 +1,44 @@
 <div class="details-container">
-  <h1>{{ currentSeance?.title }}</h1>
+  <h1>{{ currentSeance.title }}</h1>
   <div class="owner-details">
     <p>
       Posted by
       <span
-        >{{ currentSeance?.postedBy?.username }}
-        {{ currentSeance?.created_at | timeFromNow }}</span
+        >{{ currentSeance.postedBy.username }}
+        {{ currentSeance.created_at | timeFromNow }}</span
       >
     </p>
   </div>
   <div class="owner-buttons" *ngIf="isOwner">
-    <button>Edit</button>
-    <button>Delete</button>
+    <button routerLink="/seances/{{currentSeance._id}}/edit">Edit</button>
+    <button (click)="deleteSeance()">Delete</button>
   </div>
   <div class="description">
     Description:
-    <span>{{ currentSeance?.description }}</span>
+    <span>{{ currentSeance.description }}</span>
   </div>
   <div class="details">
     <div class="detail">
       Type:
-      <span>{{ currentSeance?.type }}</span>
+      <span>{{ currentSeance.type }}</span>
     </div>
     <div class="detail">
       Duration:
-      <span>{{ currentSeance?.duration }} hours</span>
+      <span>{{ currentSeance.duration }} hours</span>
     </div>
     <div class="detail">
       Price:
-      <span>{{ currentSeance?.price }}$</span>
+      <span>{{ currentSeance.price }}$</span>
     </div>
   </div>
 
   <h1>Here you can make an appointment!</h1>
-  <form class="appointment" #form="ngForm">
+  <form class="appointment" #dateForm="ngForm">
     <div class="form-control">
       <input
         matInput
         [matDatepicker]="picker"
+        name="date"
         ngModel
         #date="ngModel"
         placeholder="Date"

@@ -13,6 +13,8 @@ export class SeancesComponent implements OnInit{
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getAll().subscribe((seances) => this.seanceList = seances)
+    this.api.getAll().subscribe((seances) => {
+      this.seanceList = seances;
+    })
   }
 }

@@ -12,3 +12,11 @@ export interface Seance {
     updatedAt: Date,
     __v: number,
 }
+
+export interface SeanceRaw {
+    title: string,
+    description: string,
+    type: string,
+    price: number,
+    duration: number,
+}
