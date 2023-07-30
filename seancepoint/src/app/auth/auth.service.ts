@@ -58,6 +58,16 @@ export class AuthService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  // edit profiel info
+
+  editProfile(email: string, username: string, tel: string) {
+    return this.api.put(`/api/users/profile`, {
+      email,
+      username,
+      tel
+    })
+  }
+
   // logout
   logout() {
     return this.api

@@ -1,0 +1,18 @@
+h2 {
+    font-size: 2rem;
+    margin: 60px auto;
+}
+
+form.register{
+    width: 20%;
+    text-align: center;
+}
+
+.form-control input {
+    border-bottom-color: darkorchid;
+}
+
+button {
+    padding: 20px 40px;
+    font-size: 1.25rem;
+}

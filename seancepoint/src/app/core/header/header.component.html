@@ -10,11 +10,11 @@
     <!-- Auth-directed navigation (login, register, logout, profile) -->
     <nav class="right">
         <ul *ngIf="!isLoggedIn">
-            <li><a class="button" routerLink="auth/login">Login</a></li>
-            <li><a class="button" routerLink="auth/register">Register</a></li>
+            <li><a class="button" routerLink="/auth/login">Login</a></li>
+            <li><a class="button" routerLink="/auth/register">Register</a></li>
         </ul>
         <ul *ngIf="isLoggedIn">
-            <li><a class="button" routerLink="auth/profile">My Profile</a></li>
+            <li><a class="button" routerLink="/auth/profile">My Profile</a></li>
             <li><a class="button" (click)="logout()">Logout</a></li>
         </ul>
     </nav>

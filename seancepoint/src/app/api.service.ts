@@ -35,6 +35,10 @@ export class ApiService {
 
   // my seances
 
+  getMySeances() {
+    return this.http.get<Seance[]>(`/api/seances/my-seances`);
+  }
+
   // specific seance
 
   getOne(id: string) {

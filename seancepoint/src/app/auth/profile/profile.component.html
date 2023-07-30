@@ -30,7 +30,7 @@
 </div>
 
 <div class="btn-container">
-  <div class="button" *ngIf="user.seances">My Seances</div>
-  <div class="button" *ngIf="hasSeances">My Seances</div>
-  <div class="button">Edit Profile</div>
+  <div class="button" *ngIf="hasAppointments" routerLink="/auth/my-appointments">My Appointments</div>
+  <div class="button" *ngIf="hasSeances" routerLink="/auth/my-seances">My Seances</div>
+  <div class="button" routerLink="/auth/profile/edit">Edit Profile</div>
 </div>

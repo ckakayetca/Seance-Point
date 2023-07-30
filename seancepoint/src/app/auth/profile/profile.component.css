@@ -19,7 +19,8 @@ p {
 }
 
 .button {
-    width: 100px;
+    width: auto;
+    padding: 10px;
     margin: 20px;
     position: relative;
     display: inline-block;;

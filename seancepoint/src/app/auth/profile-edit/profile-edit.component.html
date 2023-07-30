@@ -1,1 +1,50 @@
-<p>profile-edit works!</p>
+<form class="register" #form="ngForm" >
+    <fieldset>
+      <h2>Edit Profile</h2>
+
+      <!-- username -->
+      <div class="form-control">
+        <p class="field field-icon">
+          <input
+            class="input-error"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            ngModel
+            #username="ngModel"
+          />
+        </p>
+      </div>
+
+      <!-- email -->
+      <div class="form-control">
+        <p class="field field-icon">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="E-mail"
+            ngModel
+            #email="ngModel"
+          />
+        </p>
+      </div>
+
+      <!-- telephone -->
+      <div class="form-control">
+
+        <p class="field field-icon">
+          <input
+          type="text"
+          name="tel"
+          id="tel"
+          placeholder="+359 123 456 789"
+          ngModel
+          #tel="ngModel"
+          />
+        </p>
+      </div>
+        <button>Submit</button>
+    </fieldset>
+  </form>

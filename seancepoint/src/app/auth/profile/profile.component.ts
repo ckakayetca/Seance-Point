@@ -7,24 +7,27 @@ import { emptyUser } from 'src/app/shared/utils/emptyseance';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   user: User = emptyUser;
   hasSeances: boolean = false;
+  hasAppointments: boolean = false;
 
   constructor(private authSvc: AuthService) {
-    this.authSvc.getProfile().subscribe((user) => this.user = user)
+    this.authSvc.getProfile().subscribe((user) => (this.user = user));
   }
 
   ngOnInit(): void {
-      this.authSvc.getProfile().subscribe((user) => {
-        console.log(user)
-        this.user = user
-        if(user.seances.length > 0) {
-          this.hasSeances = true
-        }
-      })
+    this.authSvc.getProfile().subscribe((user) => {
+      console.log(user);
+      this.user = user;
+      if (user.seances.length > 0) {
+        this.hasSeances = true;
+      }
+      if (user.appointments.length > 0) {
+        this.hasAppointments = true;
+      }
+    });
   }
-
 }

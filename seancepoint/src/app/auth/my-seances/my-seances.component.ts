@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Seance } from '../../types/seance';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-my-seances',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-seances.component.css']
 })
 export class MySeancesComponent {
+  seanceList: Seance[] = [];
 
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.api.getMySeances().subscribe((seances) => {
+      this.seanceList = seances;
+    })
+  }
 }

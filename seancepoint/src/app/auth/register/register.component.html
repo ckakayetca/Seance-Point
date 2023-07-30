@@ -1,3 +1,14 @@
+<!--
+  Email must match this regex /^\w+@abv.bg$/g
+  (letter/digit/underscore) + @abv.bg
+  I did this solely to demonstrate a validator directive
+ -->
+
+<!-- Username must match this regex /^\w+$/g -->
+<!-- Username should be at least 4 characters -->
+
+<!-- Password must match this regex /^\w+$/g -->
+<!-- Password should be at least 5 characters -->
 <form class="register" #form="ngForm" (ngSubmit)="register(form)">
   <fieldset>
     <h2>Registration</h2>
@@ -33,49 +44,47 @@
 
     <!-- telephone -->
     <div class="form-control">
-
       <p class="field field-icon">
         <input
-        type="text"
-        name="tel"
-        id="tel"
-        placeholder="+359 123 456 789"
-        ngModel
-        #tel="ngModel"
+          type="text"
+          name="tel"
+          id="tel"
+          placeholder="+359 123 456 789"
+          ngModel
+          #tel="ngModel"
         />
       </p>
     </div>
 
-      <!-- password -->
-      <div class="form-control">
-        <p class="field field-icon">
-          <input
+    <!-- password -->
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
           type="password"
           name="password"
           id="password"
           placeholder="******"
           #password="ngModel"
           ngModel
-          />
-        </p>
-      </div>
+        />
+      </p>
+    </div>
 
-      <!-- rePassword -->
-      <div class="form-control">
-
-        <p class="field field-icon">
-          <input
+    <!-- rePassword -->
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
           type="password"
           name="rePassword"
           id="rePassword"
           placeholder="******"
           ngModel
           #rePassword="ngModel"
-          />
-        </p>
-      </div>
+        />
+      </p>
+    </div>
 
-      <button (click)="register(form)">Create Account</button>
+    <button (click)="register(form)">Create Account</button>
 
     <p class="text-center">
       Have an account?
