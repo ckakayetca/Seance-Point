@@ -10,7 +10,7 @@ import { ErrorService } from 'src/app/core/error/error.service';
   styleUrls: ['./new-seance.component.css'],
 })
 export class NewSeanceComponent {
-  typeRegex: RegExp = /[A-Za-z\s]+/g;
+  typeRegex: RegExp = /[A-Za-z\s]+/;
 
   constructor(private api: ApiService, private router: Router, private errSvc: ErrorService) {}
 

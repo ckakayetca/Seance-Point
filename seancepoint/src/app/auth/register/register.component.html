@@ -1,18 +1,23 @@
+<!-- Email is required -->
 <!--
-  Email must match this regex /^\w+@abv.bg$/g
+  Email must match this regex /^\w+@abv.bg$/
   (letter/digit/underscore) + @abv.bg
   I did this solely to demonstrate a validator directive
  -->
 
-<!-- Username must match this regex /^\w+$/g -->
+<!-- Username is required -->
+<!-- Username must match this regex /^\w+$/ -->
 <!-- Username should be at least 4 characters -->
 
-<!-- Password must match this regex /^\w+$/g -->
+<!-- Password is required -->
+<!-- Password must match this regex /^\w+$/ -->
 <!-- Password should be at least 5 characters -->
-<!-- Passwords must match -->
+<!-- Passwords must match (passwordCheck directive) -->
 
-<!-- Phone must match this regex /^\+359\d{9}$/g -->
+<!-- Phone is required -->
+<!-- Phone must match this regex /^\+359\d{9}$/ -->
 <!-- Phone should start with +359 and have 9 digits afterwards -->
+
 <form class="register" #form="ngForm" (ngSubmit)="register(form)">
   <fieldset>
     <h2>Registration</h2>
@@ -28,8 +33,20 @@
           placeholder="Username"
           ngModel
           #username="ngModel"
+          [appRegex]="userPassRegex"
+          [minlength]="4"
+          required
         />
       </p>
+      <ng-container *ngIf="username.touched">
+        <p *ngIf="username.errors?.['minlength']">
+          Username should be at least 4 characters long
+        </p>
+        <p *ngIf="username.errors?.['required']">Username is required</p>
+        <p *ngIf="username.errors?.['regexValidator']">
+          Username must contain only letters, digits and underscores
+        </p>
+      </ng-container>
     </div>
 
     <!-- email -->
@@ -42,8 +59,17 @@
           placeholder="E-mail"
           ngModel
           #email="ngModel"
+          required
+          [appRegex]="emailRegex"
         />
       </p>
+      <ng-container *ngIf="email.touched">
+        <p *ngIf="email.errors?.['required']">E-mail is required</p>
+        <p *ngIf="email.errors?.['regexValidator']">
+          Email should have only letters, digits and underscores and should end
+          with @abv.bg
+        </p>
+      </ng-container>
     </div>
 
     <!-- telephone -->
@@ -53,47 +79,70 @@
           type="text"
           name="tel"
           id="tel"
-          placeholder="+359 123 456 789"
+          placeholder="+359123456789"
           ngModel
           #tel="ngModel"
+          required
+          [appRegex]="telRegex"
         />
       </p>
+      <ng-container *ngIf="tel.touched">
+        <p *ngIf="tel.errors?.['required']">Phone number is required</p>
+        <p *ngIf="tel.errors?.['regexValidator']">
+          Phone number should start with +359 and have 9 digits afterwards
+        </p>
+      </ng-container>
     </div>
 
-    <ng-container ngModelGroup="passGroup" #passGroup="ngModelGroup" appPasswordCheck>
+    <ng-container
+      ngModelGroup="passGroup"
+      #passGroup="ngModelGroup"
+      appPasswordCheck
+    >
       <!-- password -->
       <div class="form-control">
         <p class="field field-icon">
           <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="******"
-          #password="ngModel"
-          ngModel
-          [minlength]="5"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="******"
+            #password="ngModel"
+            ngModel
+            required
+            [minlength]="5"
+            [appRegex]="userPassRegex"
           />
         </p>
+        <ng-container *ngIf="password.touched">
+          <p *ngIf="password.errors?.['required']">Password is required</p>
+          <p *ngIf="password.errors?.['regexValidator']">
+            Password should contain only letters, digits and underscores
+          </p>
+          <p *ngIf="password.errors?.['minlength']">
+            Password should be at least 5 characters long
+          </p>
+        </ng-container>
       </div>
 
       <!-- rePassword -->
       <div class="form-control">
         <p class="field field-icon">
           <input
-          type="password"
-          name="rePassword"
-          id="rePassword"
-          placeholder="******"
-          ngModel
-          #rePassword="ngModel"
+            type="password"
+            name="rePassword"
+            id="rePassword"
+            placeholder="******"
+            ngModel
+            #rePassword="ngModel"
           />
         </p>
       </div>
-
-      {{ passGroup.errors | json }}
     </ng-container>
 
-      <button (click)="register(form)">Create Account</button>
+    <button type="submit" [disabled]="form.invalid">
+      Create Account
+    </button>
 
     <p class="text-center">
       Have an account?
