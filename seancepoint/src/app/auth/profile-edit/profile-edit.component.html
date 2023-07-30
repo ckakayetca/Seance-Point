@@ -2,49 +2,77 @@
     <fieldset>
       <h2>Edit Profile</h2>
 
-      <!-- username -->
-      <div class="form-control">
-        <p class="field field-icon">
-          <input
-            class="input-error"
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-            ngModel
-            #username="ngModel"
-          />
+    <!-- username -->
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
+          class="input-error"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          ngModel
+          #username="ngModel"
+          [appRegex]="userRegex"
+          [minlength]="4"
+          required
+        />
+      </p>
+      <ng-container *ngIf="username.touched">
+        <p *ngIf="username.errors?.['minlength']">
+          Username should be at least 4 characters long
         </p>
-      </div>
-
-      <!-- email -->
-      <div class="form-control">
-        <p class="field field-icon">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="E-mail"
-            ngModel
-            #email="ngModel"
-          />
+        <p *ngIf="username.errors?.['required']">Username is required</p>
+        <p *ngIf="username.errors?.['regexValidator']">
+          Username must contain only letters, digits and underscores
         </p>
-      </div>
+      </ng-container>
+    </div>
 
-      <!-- telephone -->
-      <div class="form-control">
+    <!-- email -->
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+          ngModel
+          #email="ngModel"
+          required
+          [appRegex]="emailRegex"
+        />
+      </p>
+      <ng-container *ngIf="email.touched">
+        <p *ngIf="email.errors?.['required']">E-mail is required</p>
+        <p *ngIf="email.errors?.['regexValidator']">
+          Email should have only letters, digits and underscores and should end
+          with @abv.bg
+        </p>
+      </ng-container>
+    </div>
 
-        <p class="field field-icon">
-          <input
+    <!-- telephone -->
+    <div class="form-control">
+      <p class="field field-icon">
+        <input
           type="text"
           name="tel"
           id="tel"
-          placeholder="+359 123 456 789"
+          placeholder="+359123456789"
           ngModel
           #tel="ngModel"
-          />
+          required
+          [appRegex]="telRegex"
+        />
+      </p>
+      <ng-container *ngIf="tel.touched">
+        <p *ngIf="tel.errors?.['required']">Phone number is required</p>
+        <p *ngIf="tel.errors?.['regexValidator']">
+          Phone number should start with +359 and have 9 digits afterwards
         </p>
-      </div>
-        <button>Submit</button>
+      </ng-container>
+    </div>
+        <button [disabled]="form.invalid" (click)="submit(form)">Submit</button>
     </fieldset>
   </form>

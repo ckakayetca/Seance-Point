@@ -6,3 +6,11 @@ form.register{
 .form-control input {
     border-bottom-color: darkorchid;
 }
+form.register h2 {
+    font-size: 3rem;
+    margin-bottom: 100px;
+}
+
+.ng-invalid:not(form) {
+    border-left: 2px solid red
+}

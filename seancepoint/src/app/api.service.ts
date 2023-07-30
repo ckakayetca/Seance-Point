@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Seance, SeanceRaw } from './types/seance';
 import { catchError } from 'rxjs';
 import { Review, ReviewRaw } from './types/review';
+import { Appointment } from './types/appointment';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +62,18 @@ export class ApiService {
 
   appoint(seanceId: string, date: Date) {
     return this.http.post(`/api/seances/${seanceId}/appointments`, { date });
+  }
+
+  // get my appointments
+
+  getMyApps() {
+    return this.http.get<Appointment[]>(`/api/my-appointments`);
+  }
+
+  // cancel appointment
+
+  cancelApp(id: string) {
+    return this.http.delete(`/api/my-appointments/${id}`);
   }
 
   // leave review

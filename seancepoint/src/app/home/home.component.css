@@ -1,0 +1,27 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    word-wrap: normal;
+}
+.home p {
+    font-size: 1.2rem;
+    margin: 20px auto;
+    border-bottom: 1px solid darkorchid;
+}
+.home h1 {
+    font-size: 3rem;
+}
+
+.buttons {
+    margin: 30px auto;
+}
+
+.buttons a {
+    margin: auto 30px;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 12px;
+}

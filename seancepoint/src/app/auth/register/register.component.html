@@ -138,9 +138,13 @@
           />
         </p>
       </div>
+
+      <ng-container *ngIf="rePassword.touched">
+        <p *ngIf="passGroup.errors?.['passwordCheck']">Passwords don't match</p>
+      </ng-container>
     </ng-container>
 
-    <button type="submit" [disabled]="form.invalid">
+    <button (click)="register(form)" [disabled]="form.invalid">
       Create Account
     </button>
 

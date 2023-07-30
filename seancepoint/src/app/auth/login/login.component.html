@@ -1,3 +1,11 @@
+<!-- Username is required -->
+<!-- Username must match this regex /^\w+$/ -->
+<!-- Username should be at least 4 characters -->
+
+<!-- Password is required -->
+<!-- Password must match this regex /^\w+$/ -->
+<!-- Password should be at least 5 characters -->
+
 <form class="login" #form="ngForm">
   <fieldset>
     <h2>Login to SeancePoint</h2>
@@ -13,6 +21,7 @@
           ngModel
           #username="ngModel"
           required
+          [appRegex]="userPassRegex"
         />
       </p>
       <ng-container *ngIf="username.touched">
@@ -33,6 +42,7 @@
         #password="ngModel"
         required
         minlength="4"
+        [appRegex]="userPassRegex"
       />
     </p>
     <ng-container *ngIf="password.touched">

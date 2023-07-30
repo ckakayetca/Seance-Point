@@ -10,6 +10,8 @@ import { ErrorService } from 'src/app/core/error/error.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  userPassRegex: RegExp = /^\w+$/;
+
   constructor(
     private authSvc: AuthService,
     private router: Router,

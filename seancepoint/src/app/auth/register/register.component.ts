@@ -11,8 +11,8 @@ import { ErrorService } from 'src/app/core/error/error.service';
 })
 export class RegisterComponent {
   emailRegex: RegExp = /^\w+@abv.bg$/;
-  telRegex: RegExp = /^\+359\d{9}$/;
   userPassRegex: RegExp = /^\w+$/;
+  telRegex: RegExp = /^\+359\d{9}$/;
 
 
   constructor(

@@ -1,0 +1,47 @@
+
+
+h1 {
+    text-align:center;
+    font-size: 3rem;
+    display: block;
+}
+
+.seance-card {
+    padding: 25px;
+    border-radius: 20px;
+    width: 30vw;
+    height: 200px;
+    margin: 20px auto;
+    text-align: center;
+    background-color: darkorchid;
+    color: #dfdfdf;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #dfdfdf;
+
+}
+
+.button {
+    border-radius: 10px;
+}
+
+.no-apps {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.no-apps a {
+    margin: 100px auto;
+    padding: 60px;
+    font-size: 3rem;
+}
