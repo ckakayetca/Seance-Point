@@ -1,24 +1,19 @@
-.container {
-    margin: 50px;
-    padding: 50px;
+.error-container {
+    margin: 50px auto;
     text-align: center;
+    display: flex;
     flex-direction: column;
 }
 
 h1 {
-    font-size: 4rem;
-    position: absolute;
-    top: 50%;
-    left: 20%;
+    font-size: 3rem;
 }
 
 .notification {
-    position: absolute;
+    margin: 50px auto;
     font-size: 2rem;
     padding: 25px;
-    border: 5px solid red;
+    border: 3px solid red;
     border-radius: 15px;
     background-color: rgba(206, 103, 103, 0.5);
-    top: 25%;
-    left: 25%;
 }

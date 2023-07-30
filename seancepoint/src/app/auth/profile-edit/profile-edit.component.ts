@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ErrorService } from 'src/app/core/error/error.service';
 import { AuthService } from '../auth.service';
 import { User } from 'src/app/types/user';
-import { emptyUser } from 'src/app/shared/utils/emptyseance';
+import { emptyUser } from 'src/app/shared/utils/empty-types';
 
 @Component({
   selector: 'app-profile-edit',

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { ErrorService } from 'src/app/core/error/error.service';
-import { emptySeance } from 'src/app/shared/utils/emptyseance';
+import { emptySeance } from 'src/app/shared/utils/empty-types';
 import { Seance } from 'src/app/types/seance';
 
 @Component({

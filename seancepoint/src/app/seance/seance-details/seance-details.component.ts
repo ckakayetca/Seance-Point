@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ErrorService } from 'src/app/core/error/error.service';
 import { Seance } from 'src/app/types/seance';
 import { User } from 'src/app/types/user';
-import { emptySeance, emptyUser } from '../../shared/utils/emptyseance';
+import { emptySeance, emptyUser } from '../../shared/utils/empty-types';
 import { NgForm } from '@angular/forms';
 import { DateFilterFn } from '@angular/material/datepicker';
 import { Review } from 'src/app/types/review';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from 'src/app/types/user';
 import { tap } from 'rxjs';
-import { emptyUser } from 'src/app/shared/utils/emptyseance';
+import { emptyUser } from 'src/app/shared/utils/empty-types';
 
 @Component({
   selector: 'app-profile',

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ErrorService } from 'src/app/core/error/error.service';
-import { emptySeance, emptyUser } from 'src/app/shared/utils/emptyseance';
+import { emptySeance, emptyUser } from 'src/app/shared/utils/empty-types';
 import { Review } from 'src/app/types/review';
 import { Seance } from 'src/app/types/seance';
 import { User } from 'src/app/types/user';
