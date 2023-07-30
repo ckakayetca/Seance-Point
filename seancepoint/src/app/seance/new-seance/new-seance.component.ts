@@ -24,7 +24,9 @@ export class NewSeanceComponent {
     } = form.value;
 
     this.api.createSeance(title, type, price, duration, description).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+        this.router.navigate(['/seances'])
+      },
       error: (err) => this.errSvc.setError(err),
       complete: () => {
         this.router.navigate(['/seances'])

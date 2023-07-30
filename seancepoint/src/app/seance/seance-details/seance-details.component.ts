@@ -69,7 +69,6 @@ export class SeanceDetailsComponent implements OnInit {
   ngOnInit(): void {
     const myId = this.user?._id;
     const seanceId = this.route.snapshot.params['id'];
-    console.log(myId);
 
     // check if current user is owner
     if (myId === seanceId) {
@@ -106,7 +105,6 @@ export class SeanceDetailsComponent implements OnInit {
         this.router.navigate(['/seances']);
       },
       error: (e) => {
-        console.log(e);
         this.errSvc.setError(e);
       },
     });
@@ -117,7 +115,6 @@ export class SeanceDetailsComponent implements OnInit {
 
     this.api.appoint(this.currentSeance._id, new Date(date)).subscribe({
       next: (a) => {
-        console.log(a);
         this.router.navigate(['/auth/profile']);
       },
       error: (e) => {

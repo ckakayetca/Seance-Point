@@ -45,7 +45,6 @@ export class ReviewComponent implements OnInit {
     this.seanceId = this.route.snapshot.params['id'];
     this.api.getReviews(this.seanceId).subscribe({
       next: (r) => {
-        console.log(r);
 
         this.reviewsList = r;
 
@@ -53,7 +52,6 @@ export class ReviewComponent implements OnInit {
 
         if (userIds.includes(this.user._id)) {
           this.userAlreadyReviewed = true;
-          console.log(`You have a review here`);
         }
         if (r.length > 0) {
           this.noReviews = false;
@@ -78,7 +76,6 @@ export class ReviewComponent implements OnInit {
       })
       .subscribe({
         next: (s) => {
-          console.log(s);
           location.reload();
         },
         error: (e) => {
@@ -115,7 +112,6 @@ export class ReviewComponent implements OnInit {
       })
       .subscribe({
         next: (s) => {
-          console.log(s);
           location.reload();
         },
         error: (e) => {

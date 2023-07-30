@@ -14,7 +14,6 @@ export class ErrorComponent implements OnDestroy {
   subscription: Subscription;
   constructor(private errSvc: ErrorService) {
     this.subscription = this.apiError$.subscribe((err: any) => {
-      // console.log(err);
       this.errMsg = err.message;
     });
   }

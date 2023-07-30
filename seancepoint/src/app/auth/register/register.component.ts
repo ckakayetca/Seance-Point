@@ -33,7 +33,6 @@ export class RegisterComponent {
       .register(username, email, tel, password, rePassword)
       .subscribe({
         next: (user) => {
-          console.log(user);
           this.router.navigate(['/auth/login']);
         },
         error: (e) => {

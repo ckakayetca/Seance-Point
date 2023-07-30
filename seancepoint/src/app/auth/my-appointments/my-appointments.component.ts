@@ -19,7 +19,6 @@ export class MyAppointmentsComponent {
 
     this.api.getMyApps().subscribe({
       next: (appsList) => {
-        console.log(appsList);
         this.appointmentsList = appsList;
 
         if(appsList.length > 0) {

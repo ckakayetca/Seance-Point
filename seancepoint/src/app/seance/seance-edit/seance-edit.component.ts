@@ -42,8 +42,6 @@ export class SeanceEditComponent implements OnInit {
       })
       .subscribe({
         next: (s) => {
-          console.log(`Successfully edited seance!`);
-          console.log(s);
           this.router.navigate([`/seances/${this.seanceId}`]);
         },
         error: (err) => {

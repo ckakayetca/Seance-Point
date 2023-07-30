@@ -40,7 +40,6 @@ export class ProfileEditComponent {
 
     this.authSvc.editProfile(email, username, tel).subscribe({
       next: (u) => {
-        console.log(u)
         this.router.navigate(['/auth/profile'])
       },
       error: (e) => {
