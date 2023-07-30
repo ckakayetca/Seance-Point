@@ -4,6 +4,7 @@ import { RegexDirective } from './directives/regex.directive';
 import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
 import { DatePipe } from './pipes/date.pipe';
 import { PasswordCheckDirective } from './directives/password-check.directive';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -12,7 +13,8 @@ import { PasswordCheckDirective } from './directives/password-check.directive';
     RegexDirective,
     TimeFromNowPipe,
     DatePipe,
-    PasswordCheckDirective
+    PasswordCheckDirective,
+    LoaderComponent
   ],
   imports: [
     CommonModule
@@ -22,6 +24,7 @@ import { PasswordCheckDirective } from './directives/password-check.directive';
     PasswordCheckDirective,
     TimeFromNowPipe,
     DatePipe,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

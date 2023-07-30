@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   user: User = emptyUser;
   hasSeances: boolean = false;
   hasAppointments: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private authSvc: AuthService) {
     this.authSvc.getProfile().subscribe((user) => (this.user = user));
@@ -28,6 +29,8 @@ export class ProfileComponent implements OnInit {
       if (user.appointments.length > 0) {
         this.hasAppointments = true;
       }
+
+      this.isLoading = false;
     });
   }
 }
