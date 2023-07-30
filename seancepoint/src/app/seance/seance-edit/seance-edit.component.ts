@@ -12,7 +12,7 @@ import { Seance } from 'src/app/types/seance';
   styleUrls: ['./seance-edit.component.css'],
 })
 export class SeanceEditComponent implements OnInit {
-  typeRegex: RegExp = /[A-Za-z\s]+/;
+  typeRegex: RegExp = /^[A-Za-z\s]+$/;
   seanceId: string = '';
   currentSeance: Seance = emptySeance;
 

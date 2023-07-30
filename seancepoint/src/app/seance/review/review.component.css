@@ -52,3 +52,7 @@ h2 {
     width: 40%;
     margin: 20px auto;
 }
+
+.ng-invalid:not(form) {
+  border-left: 2px solid red
+}

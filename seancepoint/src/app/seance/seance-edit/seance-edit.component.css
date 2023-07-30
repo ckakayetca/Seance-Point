@@ -19,3 +19,7 @@ h1 {
 .form-control input {
     border-bottom: 2px solid darkorchid;
 }
+
+.ng-invalid:not(form) {
+    border-left: 2px solid red
+}

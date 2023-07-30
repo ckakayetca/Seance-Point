@@ -11,7 +11,7 @@
   <p>You are also able to leave a review to express your satisfaction of the user's service.</p>
 
   <div class="buttons">
-    <a routerLink="/auth/register" class="button">Sign Up!</a>
-    <a routerLink="/auth/seances" class="button">Check out the published seances</a>
+    <a routerLink="/auth/register" class="button" *ngIf="!isLoggedIn">Sign Up!</a>
+    <a routerLink="/seances" class="button">Check out the published seances</a>
   </div>
 </div>

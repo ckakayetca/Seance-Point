@@ -9,12 +9,16 @@ import { Seance } from 'src/app/types/seance';
 })
 export class SeancesComponent implements OnInit{
   seanceList: Seance[] = [];
+  hasSeances: boolean = false;
 
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getAll().subscribe((seances) => {
       this.seanceList = seances;
+      if(seances.length > 0) {
+        this.hasSeances = true;
+      }
     })
   }
 }

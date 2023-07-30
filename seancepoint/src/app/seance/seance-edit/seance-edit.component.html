@@ -33,7 +33,7 @@
 
       <ng-container *ngIf="type.touched">
         <p class="error" *ngIf="type.errors?.['required']">Type is required.</p>
-        <p class="error" *ngIf="type.errors?.['regexValidator']">Invalid input</p>
+        <p class="error" *ngIf="type.errors?.['regexValidator']">Type must include only letters and spaces</p>
       </ng-container>
     </div>
     <div class="form-control">

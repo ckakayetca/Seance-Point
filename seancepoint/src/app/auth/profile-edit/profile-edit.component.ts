@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorService } from 'src/app/core/error/error.service';
 import { AuthService } from '../auth.service';
+import { User } from 'src/app/types/user';
+import { emptyUser } from 'src/app/shared/utils/emptyseance';
 
 @Component({
   selector: 'app-profile-edit',
@@ -13,6 +15,13 @@ export class ProfileEditComponent {
   emailRegex: RegExp = /^\w+@abv.bg$/;
   telRegex: RegExp = /^\+359\d{9}$/;
   userRegex: RegExp = /^\w+$/;
+
+  get user(): User {
+    if (!this.authSvc.user) {
+      return emptyUser;
+    }
+    return this.authSvc.user;
+  }
 
   constructor(private authSvc: AuthService, private router: Router, private errSvc: ErrorService) {
 
