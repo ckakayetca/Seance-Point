@@ -9,6 +9,10 @@
 
 <!-- Password must match this regex /^\w+$/g -->
 <!-- Password should be at least 5 characters -->
+<!-- Passwords must match -->
+
+<!-- Phone must match this regex /^\+359\d{9}$/g -->
+<!-- Phone should start with +359 and have 9 digits afterwards -->
 <form class="register" #form="ngForm" (ngSubmit)="register(form)">
   <fieldset>
     <h2>Registration</h2>
@@ -56,35 +60,40 @@
       </p>
     </div>
 
-    <!-- password -->
-    <div class="form-control">
-      <p class="field field-icon">
-        <input
+    <ng-container ngModelGroup="passGroup" #passGroup="ngModelGroup" appPasswordCheck>
+      <!-- password -->
+      <div class="form-control">
+        <p class="field field-icon">
+          <input
           type="password"
           name="password"
           id="password"
           placeholder="******"
           #password="ngModel"
           ngModel
-        />
-      </p>
-    </div>
+          [minlength]="5"
+          />
+        </p>
+      </div>
 
-    <!-- rePassword -->
-    <div class="form-control">
-      <p class="field field-icon">
-        <input
+      <!-- rePassword -->
+      <div class="form-control">
+        <p class="field field-icon">
+          <input
           type="password"
           name="rePassword"
           id="rePassword"
           placeholder="******"
           ngModel
           #rePassword="ngModel"
-        />
-      </p>
-    </div>
+          />
+        </p>
+      </div>
 
-    <button (click)="register(form)">Create Account</button>
+      {{ passGroup.errors | json }}
+    </ng-container>
+
+      <button (click)="register(form)">Create Account</button>
 
     <p class="text-center">
       Have an account?

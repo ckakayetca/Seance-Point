@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RegexDirective } from './directives/regex.directive';
 import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
 import { DatePipe } from './pipes/date.pipe';
+import { PasswordCheckDirective } from './directives/password-check.directive';
 
 
 
@@ -10,13 +11,15 @@ import { DatePipe } from './pipes/date.pipe';
   declarations: [
     RegexDirective,
     TimeFromNowPipe,
-    DatePipe
+    DatePipe,
+    PasswordCheckDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
     RegexDirective,
+    PasswordCheckDirective,
     TimeFromNowPipe,
     DatePipe,
   ]
