@@ -22,11 +22,16 @@
           #username="ngModel"
           required
           [appRegex]="userPassRegex"
+          [minlength]="4"
         />
       </p>
       <ng-container *ngIf="username.touched">
-        <p class="error" *ngIf="username.errors?.['required']">
-          Username is required!
+        <p *ngIf="username.errors?.['minlength']">
+          Username should be at least 4 characters long
+        </p>
+        <p *ngIf="username.errors?.['required']">Username is required</p>
+        <p *ngIf="username.errors?.['regexValidator']">
+          Username must contain only letters, digits and underscores
         </p>
       </ng-container>
     </div>
@@ -41,16 +46,17 @@
         ngModel
         #password="ngModel"
         required
-        minlength="4"
+        minlength="5"
         [appRegex]="userPassRegex"
       />
     </p>
     <ng-container *ngIf="password.touched">
-      <p class="error" *ngIf="password.errors?.['required']">
-        Password is required!
+      <p *ngIf="password.errors?.['required']">Password is required</p>
+      <p *ngIf="password.errors?.['regexValidator']">
+        Password should contain only letters, digits and underscores
       </p>
-      <p class="error" *ngIf="password.errors?.['minlength']">
-        Password must be at least 4 characters!
+      <p *ngIf="password.errors?.['minlength']">
+        Password should be at least 5 characters long
       </p>
     </ng-container>
     </div>
