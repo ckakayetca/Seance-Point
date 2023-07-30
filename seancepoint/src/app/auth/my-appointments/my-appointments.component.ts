@@ -11,6 +11,7 @@ import { Appointment } from 'src/app/types/appointment';
 export class MyAppointmentsComponent {
   appointmentsList: Appointment[] = [];
   hasAppointments: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private api: ApiService, private errSvc: ErrorService) {}
 
@@ -24,6 +25,8 @@ export class MyAppointmentsComponent {
         if(appsList.length > 0) {
           this.hasAppointments = true;
         }
+
+        this.isLoading = false;
       },
       error: (e) => this.errSvc.setError(e)
     })

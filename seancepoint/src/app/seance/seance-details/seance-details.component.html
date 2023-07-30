@@ -1,11 +1,15 @@
-<div class="details-container">
-  <h1>{{ currentSeance.title }}</h1>
-  <div class="owner-details">
-    <p>
-      Posted by
+
+<app-loader *ngIf="isLoading"></app-loader>
+<ng-container *ngIf="!isLoading">
+
+  <div class="details-container">
+    <h1>{{ currentSeance.title }}</h1>
+    <div class="owner-details">
+      <p>
+        Posted by
       <span
-        >{{ currentSeance.postedBy.username }} on
-        {{ currentSeance.created_at | date }}</span
+      >{{ currentSeance.postedBy.username }} on
+      {{ currentSeance.created_at | date }}</span
       >
     </p>
   </div>
@@ -36,13 +40,13 @@
   </div>
 
   <div
-    class="appointment-con"
-    *ngIf="isLoggedIn && !isOwner && !hasAppointment"
+  class="appointment-con"
+  *ngIf="isLoggedIn && !isOwner && !hasAppointment"
   >
-    <h1>Here you can make an appointment!</h1>
-    <form class="appointment" #dateForm="ngForm">
-      <div class="form-control">
-        <input
+  <h1>Here you can make an appointment!</h1>
+  <form class="appointment" #dateForm="ngForm">
+    <div class="form-control">
+      <input
           matInput
           [matDatepicker]="picker"
           name="date"
@@ -51,16 +55,18 @@
           placeholder="Date"
           [min]="tomorrow"
           [matDatepickerFilter]="dateFilter"
-        />
-        <mat-datepicker-toggle
+          />
+          <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker [touchUi]="true"></mat-datepicker>
-      </div>
-      <button (click)="appoint(dateForm)">Make an appointment</button>
-    </form>
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker [touchUi]="true"></mat-datepicker>
+        </div>
+        <button (click)="appoint(dateForm)">Make an appointment</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<app-review [isOwner]="isOwner" [seanceId]="currentSeance._id"></app-review>
+  <app-review [isOwner]="isOwner" [seanceId]="currentSeance._id"></app-review>
+
+</ng-container>

@@ -9,12 +9,14 @@ import { ApiService } from 'src/app/api.service';
 })
 export class MySeancesComponent {
   seanceList: Seance[] = [];
+  isLoading: boolean = true;
 
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getMySeances().subscribe((seances) => {
       this.seanceList = seances;
+      this.isLoading = false;
     })
   }
 }

@@ -1,12 +1,17 @@
-<h1>My Seances</h1>
+<app-loader *ngIf="isLoading"></app-loader>
+<ng-container *ngIf="!isLoading">
 
-<div class="cards-container">
-  <div class="seance-card" *ngFor="let seance of seanceList">
-    <h3>
-      <a routerLink="/seances/{{seance._id}}" class="button"><span>{{ seance.title }}</span></a>
-    </h3>
-    <p>{{ seance.type }}</p>
-    <p>{{ seance.price }}$ for an appointment</p>
-    <p>{{ seance.created_at | timeFromNow }}</p>
+  <h1>My Seances</h1>
+
+  <div class="cards-container">
+    <div class="seance-card" *ngFor="let seance of seanceList">
+      <h3>
+        <a routerLink="/seances/{{seance._id}}" class="button"><span>{{ seance.title }}</span></a>
+      </h3>
+      <p>{{ seance.type }}</p>
+      <p>{{ seance.price }}$ for an appointment</p>
+      <p>{{ seance.created_at | timeFromNow }}</p>
+    </div>
   </div>
-</div>
+
+</ng-container>

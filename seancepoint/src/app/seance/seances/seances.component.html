@@ -1,13 +1,19 @@
-<h1 *ngIf="hasSeances">Seances Page</h1>
-<h1 *ngIf="!hasSeances">No seances have been posted for now.</h1>
 
-<div class="cards-container">
-  <div class="seance-card" *ngFor="let seance of seanceList">
-    <h3>
-      <a routerLink="/seances/{{seance._id}}" class="button"><span>{{ seance.title }}</span></a>
-    </h3>
-    <p>{{ seance.type }}</p>
-    <p>{{ seance.price }}$ for an appointment</p>
-    <p>{{ seance.created_at | timeFromNow }}</p>
+<app-loader *ngIf="isLoading"></app-loader>
+<ng-container *ngIf="!isLoading">
+
+  <h1 *ngIf="hasSeances">Seances Page</h1>
+  <h1 *ngIf="!hasSeances">No seances have been posted for now.</h1>
+
+  <div class="cards-container">
+    <div class="seance-card" *ngFor="let seance of seanceList">
+      <h3>
+        <a routerLink="/seances/{{seance._id}}" class="button"><span>{{ seance.title }}</span></a>
+      </h3>
+      <p>{{ seance.type }}</p>
+      <p>{{ seance.price }}$ for an appointment</p>
+      <p>{{ seance.created_at | timeFromNow }}</p>
+    </div>
   </div>
-</div>
+
+</ng-container>

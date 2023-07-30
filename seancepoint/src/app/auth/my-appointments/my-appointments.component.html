@@ -1,22 +1,29 @@
-<h1 *ngIf="hasAppointments">My Appointments</h1>
+<app-loader *ngIf="isLoading"></app-loader>
+<ng-container *ngIf="!isLoading">
+  <h1 *ngIf="hasAppointments">My Appointments</h1>
 
-<div class="no-apps" *ngIf="!hasAppointments">
+  <div class="no-apps" *ngIf="!hasAppointments">
     <h1>You have no appointments!</h1>
     <a routerLink="/auth/profile" class="button">Go Back</a>
-</div>
+  </div>
 
-<div class="cards-container">
-  <div class="seance-card" *ngFor="let app of appointmentsList">
-    <h3>
-      <a class="title"><span>{{ app.seanceId.title }}</span></a>
-    </h3>
-    <p>Type: {{ app.seanceId.type }}</p>
-    <p>Price: {{ app.seanceId.price }}$</p>
-    <p>{{ app.date | date }}</p>
+  <div class="cards-container">
+    <div class="seance-card" *ngFor="let app of appointmentsList">
+      <h3>
+        <a class="title"
+          ><span>{{ app.seanceId.title }}</span></a
+        >
+      </h3>
+      <p>Type: {{ app.seanceId.type }}</p>
+      <p>Price: {{ app.seanceId.price }}$</p>
+      <p>{{ app.date | date }}</p>
 
-    <div class="btn-container">
+      <div class="btn-container">
         <button (click)="cancelApp(app._id)">Cancel Appointment</button>
-        <button routerLink="/seances/{{app.seanceId._id}}">Go to Seance</button>
+        <button routerLink="/seances/{{ app.seanceId._id }}">
+          Go to Seance
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

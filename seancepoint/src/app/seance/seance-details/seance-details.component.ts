@@ -22,6 +22,7 @@ export class SeanceDetailsComponent implements OnInit {
   tomorrow: Date = new Date();
   takenDatesList: string[] = [];
   hasAppointment: boolean = false;
+  isLoading: boolean = true;
 
   get isLoggedIn(): boolean {
     return this.authSvc.isLoggedIn;
@@ -91,6 +92,8 @@ export class SeanceDetailsComponent implements OnInit {
         if (userIds.includes(myId)) {
           this.hasAppointment = true;
         }
+
+        this.isLoading = false;
       },
       error: (e) => this.errSvc.setError(e),
     });

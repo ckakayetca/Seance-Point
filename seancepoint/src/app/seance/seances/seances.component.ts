@@ -10,6 +10,7 @@ import { Seance } from 'src/app/types/seance';
 export class SeancesComponent implements OnInit{
   seanceList: Seance[] = [];
   hasSeances: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private api: ApiService) {}
 
@@ -19,6 +20,7 @@ export class SeancesComponent implements OnInit{
       if(seances.length > 0) {
         this.hasSeances = true;
       }
+      this.isLoading = false;
     })
   }
 }

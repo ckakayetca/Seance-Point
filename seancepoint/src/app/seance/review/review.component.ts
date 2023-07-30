@@ -22,6 +22,7 @@ export class ReviewComponent implements OnInit {
   noReviews: boolean = true;
   editMode: boolean = false;
   userAlreadyReviewed: boolean = false;
+  isLoading: boolean = true;
 
   get user(): User {
     if (!this.authSvc.user) {
@@ -38,26 +39,27 @@ export class ReviewComponent implements OnInit {
     private route: ActivatedRoute,
     private errSvc: ErrorService,
     private api: ApiService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.seanceId = this.route.snapshot.params['id']
+    this.seanceId = this.route.snapshot.params['id'];
     this.api.getReviews(this.seanceId).subscribe({
       next: (r) => {
         console.log(r);
 
         this.reviewsList = r;
 
-        let userIds = r.map((review) => review.postedBy._id)
+        let userIds = r.map((review) => review.postedBy._id);
 
-        if(userIds.includes(this.user._id)) {
+        if (userIds.includes(this.user._id)) {
           this.userAlreadyReviewed = true;
-          console.log(`You have a review here`)
+          console.log(`You have a review here`);
         }
         if (r.length > 0) {
           this.noReviews = false;
         }
+
+        this.isLoading = false;
       },
       error: (e) => this.errSvc.setError(e),
     });
@@ -97,8 +99,8 @@ export class ReviewComponent implements OnInit {
     const myId = this.user._id;
     const { rating, reviewText } = form.value;
     let reviewId = '';
-    for(let r of this.reviewsList) {
-      if(r.postedBy._id === myId) {
+    for (let r of this.reviewsList) {
+      if (r.postedBy._id === myId) {
         reviewId = r._id;
         break;
       }
@@ -125,8 +127,8 @@ export class ReviewComponent implements OnInit {
   deleteReview() {
     const myId = this.user._id;
     let reviewId = '';
-    for(let r of this.reviewsList) {
-      if(r.postedBy._id === myId) {
+    for (let r of this.reviewsList) {
+      if (r.postedBy._id === myId) {
         reviewId = r._id;
         break;
       }
@@ -137,9 +139,9 @@ export class ReviewComponent implements OnInit {
         location.reload();
       },
       error: (e) => {
-        this.errSvc.setError(e)
-      }
-    })
+        this.errSvc.setError(e);
+      },
+    });
   }
 
   checkIfOwner = (r: Review, u: User): boolean => {
